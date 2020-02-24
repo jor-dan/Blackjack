@@ -1,7 +1,9 @@
 {
   "name": "blackjack",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^3.8.2"
+  },
   "repository": "github:jor-dan/Blackjack",
   "author": "Jordan Owens",
   "license": "MIT",
