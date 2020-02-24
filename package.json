@@ -1,0 +1,9 @@
+{
+  "name": "blackjack",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": "github:jor-dan/Blackjack",
+  "author": "Jordan Owens",
+  "license": "MIT",
+  "private": true
+}
