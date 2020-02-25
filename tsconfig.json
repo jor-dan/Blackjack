@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "commonjs",
+    "esModuleInterop": true,
+    "jsx": "react",
     "outDir": "out",
   },
   "include": [
     "src",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out",
   ]
 }
