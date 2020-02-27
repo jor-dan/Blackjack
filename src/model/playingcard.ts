@@ -13,7 +13,15 @@ class PlayingCard {
 
   public suit = (): Suit => this._suit;
 
-  public rank = (): Rank => this._rank;
+  public rank = (): string => {
+    switch (this._rank) {
+      case 1: return 'A';
+      case 11: return 'J';
+      case 12: return 'Q';
+      case 13: return 'K';
+      default: return this._rank.toString();
+    }
+  };
 
   public value = (): number => Math.min(this._rank, 10);
 

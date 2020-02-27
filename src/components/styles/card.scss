@@ -1,0 +1,79 @@
+$card-height: 252px;
+$card-width: 180px;
+$card-background: whitesmoke;
+$card-color-red: #d12d36;
+$card-symbol-size: 100px;
+$card-padding: 5px;
+
+.card {
+  height: $card-height;
+  width: $card-width;
+  background-color: $card-background;
+  font-weight: bold;
+  display: inline-flex;
+  position: relative;
+  border-radius: 10px;
+  margin: 5px;
+
+  &:before,
+  &:after {
+    content: attr(id);
+    position: absolute;
+    width: 15px;
+    letter-spacing: -2px;
+  }
+
+  &:before {
+    top: $card-padding;
+    left: $card-padding;
+  }
+
+  &:after {
+    bottom: $card-padding;
+    right: $card-padding;
+    transform: rotate(180deg);
+  }
+
+  &-Clubs {
+    &:before,
+    &:after {
+      content: attr(id) " ♣";
+    }
+  }
+
+  &-Diamonds {
+    color: $card-color-red;
+
+    &:before,
+    &:after {
+      content: attr(id) " ♦";
+    }
+  }
+
+  &-Hearts {
+    color: $card-color-red;
+
+    &:before,
+    &:after {
+      content: attr(id) " ♥";
+    }
+  }
+
+  &-Spades {
+    &:before,
+    &:after {
+      content: attr(id) " ♠";
+    }
+  }
+
+  .symbol {
+    font-size: $card-symbol-size;
+    position: absolute;
+    margin: 0;
+    $horizontal-offset: ($card-width - $card-symbol-size)/2;
+    top: 25%;
+    right: $horizontal-offset;
+    bottom: 25%;
+    left: $horizontal-offset;
+  }
+}
