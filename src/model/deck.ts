@@ -22,6 +22,12 @@ class Deck {
       [this._deck[i], this._deck[swap]] = [this._deck[swap], this._deck[i]];
     }
   }
+
+  public drawCard(faceUp = true): PlayingCard {
+    const card = this._deck.pop();
+    card.setFaceUp(faceUp);
+    return card;
+  }
 }
 
 export default Deck;
