@@ -17,6 +17,7 @@ module.exports = {
     'no-plusplus': ['warn', { 'allowForLoopAfterthoughts': true }],
     'no-underscore-dangle': ['warn', { 'allowAfterThis': true }],
     'react/jsx-filename-extension': ['warn', { 'extensions': ['.jsx', '.tsx'] }],
+    'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
   },
   overrides: [
