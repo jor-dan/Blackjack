@@ -1,11 +1,13 @@
 module.exports = {
   env: {
     browser: true,
+    jest: true
   },
   extends: [
     'airbnb',
     'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
+    "plugin:jest/all",
   ],
   parser: '@typescript-eslint/parser',
   rules: {
@@ -14,6 +16,7 @@ module.exports = {
     'default-case': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
+    'jest/lowercase-name': ['error', { 'ignore': ['describe'] }],
     'no-plusplus': ['warn', { 'allowForLoopAfterthoughts': true }],
     'no-underscore-dangle': ['warn', { 'allowAfterThis': true }],
     'react/jsx-filename-extension': ['warn', { 'extensions': ['.jsx', '.tsx'] }],

@@ -6,13 +6,15 @@
     "dev": "webpack-dev-server",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "test": "jest"
   },
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.3",
     "@types/react": "^16.9.22",
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
@@ -23,14 +25,17 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.4.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^25.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "sass": "^1.26.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
+    "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",

@@ -23,9 +23,9 @@ class Deck {
     }
   }
 
-  public drawCard(faceUp = true): PlayingCard {
+  public drawCard(faceUp = true): PlayingCard | undefined {
     const card = this._deck.pop();
-    card.setFaceUp(faceUp);
+    if (card !== undefined) card.setFaceUp(faceUp);
     return card;
   }
 }
