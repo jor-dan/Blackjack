@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Hand from './Hand';
 import Deck from '../model/deck';
 import PlayingCard from '../model/playingcard';
-import './styles/app.scss';
 
 const App = () => {
   const [deck] = useState(new Deck());

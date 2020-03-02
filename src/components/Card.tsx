@@ -1,6 +1,5 @@
 import React from 'react';
 import PlayingCard from '../model/playingcard';
-import './styles/card.scss';
 
 interface CardProps {
   card: PlayingCard;
