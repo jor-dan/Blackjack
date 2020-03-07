@@ -23,8 +23,9 @@ describe('<App />', () => {
   it('should have proper titles for both hands', () => {
     expect.assertions(2);
     const wrapper = shallow(<App />);
+    const regExp = /^(Deal|Play)er.{1,}\d{1,2}/;
     wrapper.find(Hand).forEach((node) => {
-      expect(node.prop('title')).toStrictEqual(expect.stringMatching(/^(Deal|Play)er/));
+      expect(node.prop('title')).toStrictEqual(expect.stringMatching(regExp));
     });
   });
 
@@ -41,25 +42,10 @@ describe('<App />', () => {
   });
 
   it('should give user 1 card when hit is clicked', () => {
-    expect.assertions(2);
-    const wrapper = mount(<App />);
-    wrapper.find('#hit').simulate('click');
-    const hands = wrapper.find(Hand);
-    // Dealer still has 2 cards.
-    expect(hands.at(0).prop('hand')).toHaveLength(2);
-    // Player has 1 additonal card.
-    expect(hands.at(1).prop('hand')).toHaveLength(3);
-  });
-
-  it('should not disable buttons when hit is clicked', () => {
     expect.assertions(1);
     const wrapper = mount(<App />);
     wrapper.find('#hit').simulate('click');
-    expect(wrapper.find(Controls).props()).toStrictEqual({
-      hit: expect.any(Function),
-      stand: expect.any(Function),
-      enabled: { hit: true, stand: true },
-    });
+    expect(wrapper.find(Hand).at(1).prop('hand')).toHaveLength(3);
   });
 
   it('should disable buttons when stand is clicked', () => {
