@@ -33,11 +33,14 @@ describe('<App />', () => {
     expect.assertions(2);
     const wrapper = mount(<App />);
     const controls = wrapper.find(Controls);
-    expect(controls.find('button')).toHaveLength(2);
+    expect(controls.find('button')).toHaveLength(3);
     expect(controls.props()).toStrictEqual({
-      hit: expect.any(Function),
-      stand: expect.any(Function),
-      enabled: { hit: true, stand: true },
+      functions: {
+        hit: expect.any(Function),
+        stand: expect.any(Function),
+        reset: expect.any(Function),
+      },
+      enabled: { hit: true, stand: true, reset: true },
     });
   });
 
@@ -48,14 +51,26 @@ describe('<App />', () => {
     expect(wrapper.find(Hand).at(1).prop('hand')).toHaveLength(3);
   });
 
-  it('should disable buttons when stand is clicked', () => {
+  it('should disable hit and stand buttons when stand is clicked', () => {
     expect.assertions(1);
     const wrapper = mount(<App />);
     wrapper.find('#stand').simulate('click');
     expect(wrapper.find(Controls).props()).toStrictEqual({
-      hit: expect.any(Function),
-      stand: expect.any(Function),
-      enabled: { hit: false, stand: false },
+      functions: {
+        hit: expect.any(Function),
+        stand: expect.any(Function),
+        reset: expect.any(Function),
+      },
+      enabled: { hit: false, stand: false, reset: true },
+    });
+  });
+
+  it('should reset game when reset is clicked', () => {
+    expect.assertions(2);
+    const wrapper = mount(<App />);
+    wrapper.find('#reset').simulate('click');
+    wrapper.find(Hand).forEach((node) => {
+      expect(node.prop('hand')).toStrictEqual([expect.any(PlayingCard), expect.any(PlayingCard)]);
     });
   });
 });

@@ -10,7 +10,7 @@ const App = () => {
   const [dealerHand, setDealerHand] = useState<PlayingCard[]>([]);
   const [playerHand, setPlayerHand] = useState<PlayingCard[]>([]);
   const [playerTurn, setPlayerTurn] = useState<boolean | null>(null);
-  const [buttons, setButtons] = useState({ hit: true, stand: true });
+  const [buttons, setButtons] = useState({ hit: true, stand: true, reset: true });
 
   const hit = () => setPlayerHand((hand) => [...hand, deck.drawCard()]);
 
@@ -19,9 +19,16 @@ const App = () => {
       BlackjackHand.reveal(hand);
       return hand;
     });
-    setButtons({ hit: false, stand: false });
+    setButtons({ hit: false, stand: false, reset: true });
     setPlayerTurn(false);
   }, []);
+
+  const reset = () => {
+    setButtons({ hit: true, stand: true, reset: true });
+    setPlayerTurn(null);
+    setDealerHand([]);
+    setPlayerHand([]);
+  };
 
   useEffect(() => {
     if (playerTurn === null) {
@@ -39,7 +46,7 @@ const App = () => {
 
   return (
     <>
-      <Controls hit={hit} stand={stand} enabled={buttons} />
+      <Controls functions={{ hit, stand, reset }} enabled={buttons} />
       <Hand hand={dealerHand} title={`Dealer (${BlackjackHand.score(dealerHand)})`} />
       <Hand hand={playerHand} title={`Player (${BlackjackHand.score(playerHand)})`} />
     </>

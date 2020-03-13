@@ -17,6 +17,7 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'jest/lowercase-name': ['error', { 'ignore': ['describe'] }],
+    'jest/no-hooks': ['error', { 'allow': ['beforeEach'] }],
     'no-plusplus': ['warn', { 'allowForLoopAfterthoughts': true }],
     'no-underscore-dangle': ['warn', { 'allowAfterThis': true }],
     'react/jsx-filename-extension': ['warn', { 'extensions': ['.jsx', '.tsx'] }],

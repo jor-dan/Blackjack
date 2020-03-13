@@ -3,47 +3,49 @@ import { shallow } from 'enzyme';
 import Controls from '../../src/components/Controls';
 
 describe('<Controls />', () => {
-  it('should have hit and stand buttons', () => {
-    expect.assertions(3);
-    const mock = jest.fn();
-    const enabled = { hit: true, stand: true };
-    const wrapper = shallow(<Controls hit={mock} stand={mock} enabled={enabled} />);
+  const mocks = { hit: jest.fn(), stand: jest.fn(), reset: jest.fn() };
+  const enabled = { hit: true, stand: true, reset: true };
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+    Object.keys(enabled).forEach((key) => {
+      enabled[key] = true;
+    });
+  });
+
+  it('should have hit, stand, and reset buttons', () => {
+    expect.assertions(4);
+    const wrapper = shallow(<Controls functions={mocks} enabled={enabled} />);
+    mocks.hit.mockName('lol');
     const buttons = wrapper.find('button');
-    expect(buttons).toHaveLength(2);
+    expect(buttons).toHaveLength(3);
+    const regExp = /^(Hit|Stand|Reset)$/;
     buttons.forEach((button) => {
-      expect(button.text()).toStrictEqual(expect.stringMatching(/(Hit|Stand)/));
+      expect(button.text()).toStrictEqual(expect.stringMatching(regExp));
     });
   });
 
   it('should call functions when buttons are clicked', () => {
-    expect.assertions(2);
-    const hit = jest.fn();
-    const stand = jest.fn();
-    const enabled = { hit: true, stand: true };
-    const wrapper = shallow(<Controls hit={hit} stand={stand} enabled={enabled} />);
-    wrapper.find('#hit').simulate('click');
-    wrapper.find('#stand').simulate('click');
-    expect(hit).toHaveBeenCalledTimes(1);
-    expect(stand).toHaveBeenCalledTimes(1);
+    expect.assertions(3);
+    const wrapper = shallow(<Controls functions={mocks} enabled={enabled} />);
+    ['#hit', '#stand', '#reset'].forEach((id) => wrapper.find(id).simulate('click'));
+    Object.values(mocks).forEach((mock) => expect(mock).toHaveBeenCalledTimes(1));
   });
 
   it('should enable buttons according to props', () => {
-    expect.assertions(3);
-    const mock = jest.fn();
-    const enabled = { hit: true, stand: true };
-    const wrapper = shallow(<Controls hit={mock} stand={mock} enabled={enabled} />);
+    expect.assertions(4);
+    const wrapper = shallow(<Controls functions={mocks} enabled={enabled} />);
     const buttons = wrapper.find('button');
-    expect(buttons).toHaveLength(2);
+    expect(buttons).toHaveLength(3);
     buttons.forEach((button) => expect(button.prop('disabled')).toBe(false));
   });
 
   it('should disable buttons according to props', () => {
-    expect.assertions(3);
-    const mock = jest.fn();
-    const enabled = { hit: false, stand: false };
-    const wrapper = shallow(<Controls hit={mock} stand={mock} enabled={enabled} />);
+    expect.assertions(4);
+    const disabled = { hit: false, stand: false, reset: false };
+    const wrapper = shallow(<Controls functions={mocks} enabled={disabled} />);
     const buttons = wrapper.find('button');
-    expect(buttons).toHaveLength(2);
+    expect(buttons).toHaveLength(3);
     buttons.forEach((button) => expect(button.prop('disabled')).toBe(true));
   });
 });
