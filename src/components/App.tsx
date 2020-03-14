@@ -28,6 +28,7 @@ const App = () => {
     setPlayerTurn(null);
     setDealerHand([]);
     setPlayerHand([]);
+    deck.refill();
   };
 
   useEffect(() => {

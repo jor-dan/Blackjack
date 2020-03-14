@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 import App from '../../src/components/App';
 import Hand from '../../src/components/Hand';
 import Controls from '../../src/components/Controls';
+import Deck from '../../src/model/deck';
 import PlayingCard from '../../src/model/playingcard';
 
 describe('<App />', () => {
@@ -66,11 +67,13 @@ describe('<App />', () => {
   });
 
   it('should reset game when reset is clicked', () => {
-    expect.assertions(2);
+    expect.assertions(3);
+    const spy = jest.spyOn(Deck.prototype, 'refill');
     const wrapper = mount(<App />);
     wrapper.find('#reset').simulate('click');
     wrapper.find(Hand).forEach((node) => {
       expect(node.prop('hand')).toStrictEqual([expect.any(PlayingCard), expect.any(PlayingCard)]);
     });
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
