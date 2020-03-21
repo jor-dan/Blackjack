@@ -1,3 +1,5 @@
+@use 'bootstrap';
+
 body {
   background-color: #076324;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -80,7 +82,6 @@ $card-padding: 5px;
     $horizontal-offset: ($card-width - $card-symbol-size)/2;
     top: 25%;
     right: $horizontal-offset;
-    bottom: 25%;
     left: $horizontal-offset;
   }
 }

@@ -15,13 +15,31 @@ interface ControlsProps {
 
 const Controls: React.FC<ControlsProps> = ({ functions, enabled }) => (
   <>
-    <button id="hit" onClick={() => functions.hit()} disabled={!enabled.hit} type="button">
+    <button
+      className="btn btn-success"
+      id="hit"
+      onClick={() => functions.hit()}
+      disabled={!enabled.hit}
+      type="button"
+    >
       Hit
     </button>
-    <button id="stand" onClick={() => functions.stand()} disabled={!enabled.stand} type="button">
+    <button
+      className="btn btn-warning"
+      id="stand"
+      onClick={() => functions.stand()}
+      disabled={!enabled.stand}
+      type="button"
+    >
       Stand
     </button>
-    <button id="reset" onClick={() => functions.reset()} disabled={!enabled.reset} type="button">
+    <button
+      className="btn btn-danger"
+      id="reset"
+      onClick={() => functions.reset()}
+      disabled={!enabled.reset}
+      type="button"
+    >
       Reset
     </button>
   </>
