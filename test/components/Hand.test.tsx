@@ -11,7 +11,7 @@ describe('<Hand />', () => {
 
   it('should render a title', () => {
     expect.assertions(1);
-    expect(wrapper.contains(<h3>{title}</h3>)).toBe(true);
+    expect(wrapper.text()).toStrictEqual(expect.stringContaining(title));
   });
 
   it('should render cards', () => {

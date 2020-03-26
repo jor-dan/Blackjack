@@ -9,7 +9,7 @@ interface HandProps {
 
 const Hand: React.FC<HandProps> = ({ hand, title }) => (
   <>
-    <h3>{title}</h3>
+    <h3 className="hand-title">{title}</h3>
     {hand.map((card, index) => <Card card={card} key={index} />)}
   </>
 );

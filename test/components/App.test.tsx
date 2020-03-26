@@ -35,14 +35,14 @@ describe('<App />', () => {
     const wrapper = mount(<App />);
     const controls = wrapper.find(Controls);
     expect(controls.find('button')).toHaveLength(3);
-    expect(controls.props()).toStrictEqual({
+    expect(controls.props()).toStrictEqual(expect.objectContaining({
       functions: {
         hit: expect.any(Function),
         stand: expect.any(Function),
         reset: expect.any(Function),
       },
       enabled: { hit: true, stand: true, reset: true },
-    });
+    }));
   });
 
   it('should give user 1 card when hit is clicked', () => {
@@ -56,14 +56,14 @@ describe('<App />', () => {
     expect.assertions(1);
     const wrapper = mount(<App />);
     wrapper.find('#stand').simulate('click');
-    expect(wrapper.find(Controls).props()).toStrictEqual({
+    expect(wrapper.find(Controls).props()).toStrictEqual(expect.objectContaining({
       functions: {
         hit: expect.any(Function),
         stand: expect.any(Function),
         reset: expect.any(Function),
       },
       enabled: { hit: false, stand: false, reset: true },
-    });
+    }));
   });
 
   it('should reset game when reset is clicked', () => {

@@ -14,6 +14,19 @@ $card-color-red: #d12d36;
 $card-symbol-size: 100px;
 $card-padding: 5px;
 
+.bar {
+  background-color: $card-background;
+  border-radius: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.hand-title {
+  color: $card-background;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .card {
   height: $card-height;
   width: $card-width;
