@@ -3,7 +3,7 @@ import Card from './Card';
 import PlayingCard from '../model/playingcard';
 
 interface HandProps {
-  hand: PlayingCard[];
+  hand: readonly PlayingCard[];
   title: string;
 }
 

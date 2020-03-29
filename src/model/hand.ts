@@ -1,7 +1,7 @@
 import PlayingCard from './playingcard';
 
 abstract class Hand {
-  public static score(hand: PlayingCard[]): number {
+  public static score(hand: readonly PlayingCard[]): number {
     let score = 0;
     let aces = 0;
 
