@@ -20,17 +20,19 @@ class Blackjack {
 
   private deck: Deck;
 
-  private turn_: User;
+  private _turn: User;
 
   constructor() {
     this.deck = new Deck();
   }
 
-  /** Returns the user whose turn it is or undefined if turn hasn't been set */
-  public turn = (): User | undefined => this.turn_;
+  /** The user whose turn it is (undefined at start of game) */
+  public get turn(): User | undefined {
+    return this._turn;
+  }
 
-  public setTurn(turn: User) {
-    this.turn_ = turn;
+  public set turn(turn: User) {
+    this._turn = turn;
   }
 
   public initialHand(user: User) {
@@ -40,7 +42,7 @@ class Blackjack {
   public drawCard = () => this.deck.drawCard();
 
   public reset() {
-    this.turn_ = undefined;
+    this._turn = undefined;
     this.deck.refill();
   }
 

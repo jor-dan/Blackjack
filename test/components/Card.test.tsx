@@ -9,7 +9,7 @@ describe('<Card />', () => {
     const card = new PlayingCard(Suit.Clubs, Rank.Ace);
     const wrapper = shallow(<Card card={card} />);
     expect(wrapper.hasClass(`card-${card.suitName()}`)).toBe(true);
-    expect(wrapper.contains(<p className="symbol">{card.suit()}</p>)).toBe(true);
+    expect(wrapper.contains(<p className="symbol">{card.suit}</p>)).toBe(true);
   });
 
   it('should render a face down card', () => {

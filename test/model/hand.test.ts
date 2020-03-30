@@ -49,6 +49,6 @@ describe('Hand', () => {
       cards.push(card);
     }
     Hand.reveal(cards);
-    cards.forEach((card) => expect(card.faceUp()).toBe(true));
+    cards.forEach((card) => expect(card.faceUp).toBe(true));
   });
 });

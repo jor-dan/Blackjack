@@ -8,23 +8,23 @@ describe('Playing Card', () => {
 
   it('returns the correct suit', () => {
     expect.assertions(8);
-    expect(aceOfClubs.suit()).toBe(Suit.Clubs);
+    expect(aceOfClubs.suit).toBe(Suit.Clubs);
     expect(aceOfClubs.suitName()).toBe('Clubs');
-    expect(jackOfDiamonds.suit()).toBe(Suit.Diamonds);
+    expect(jackOfDiamonds.suit).toBe(Suit.Diamonds);
     expect(jackOfDiamonds.suitName()).toBe('Diamonds');
-    expect(kingOfHearts.suit()).toBe(Suit.Hearts);
+    expect(kingOfHearts.suit).toBe(Suit.Hearts);
     expect(kingOfHearts.suitName()).toBe('Hearts');
-    expect(queenOfSpades.suit()).toBe(Suit.Spades);
+    expect(queenOfSpades.suit).toBe(Suit.Spades);
     expect(queenOfSpades.suitName()).toBe('Spades');
   });
 
   it('returns the correct rank', () => {
     expect.assertions(5);
-    expect(aceOfClubs.rank()).toBe('A');
-    expect(jackOfDiamonds.rank()).toBe('J');
-    expect(kingOfHearts.rank()).toBe('K');
-    expect(queenOfSpades.rank()).toBe('Q');
-    expect((new PlayingCard(Suit.Clubs, 5)).rank()).toBe('5');
+    expect(aceOfClubs.rank).toBe('A');
+    expect(jackOfDiamonds.rank).toBe('J');
+    expect(kingOfHearts.rank).toBe('K');
+    expect(queenOfSpades.rank).toBe('Q');
+    expect((new PlayingCard(Suit.Clubs, 5)).rank).toBe('5');
   });
 
   it('returns the correct value', () => {
@@ -38,8 +38,8 @@ describe('Playing Card', () => {
   it('can be flipped over', () => {
     expect.assertions(2);
     const card = new PlayingCard(Suit.Clubs, 5);
-    expect(card.faceUp()).toBe(true);
+    expect(card.faceUp).toBe(true);
     card.setFaceUp(false);
-    expect(card.faceUp()).toBe(false);
+    expect(card.faceUp).toBe(false);
   });
 });

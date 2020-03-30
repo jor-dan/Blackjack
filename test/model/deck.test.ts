@@ -14,9 +14,9 @@ describe('Deck', () => {
   it('should deal cards face up or face down', () => {
     expect.assertions(3);
     const deck = new Deck();
-    expect(deck.drawCard().faceUp()).toBe(true);
-    expect(deck.drawCard(true).faceUp()).toBe(true);
-    expect(deck.drawCard(false).faceUp()).toBe(false);
+    expect(deck.drawCard().faceUp).toBe(true);
+    expect(deck.drawCard(true).faceUp).toBe(true);
+    expect(deck.drawCard(false).faceUp).toBe(false);
   });
 
   it('should refill deck with a low number of cards remaining', () => {

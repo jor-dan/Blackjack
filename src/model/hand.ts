@@ -6,7 +6,7 @@ abstract class Hand {
     let aces = 0;
 
     hand.forEach((card) => {
-      if (!card.faceUp()) return;
+      if (!card.faceUp) return;
       const value = card.value();
       if (value === 1) {
         aces += 1;

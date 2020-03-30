@@ -1,7 +1,7 @@
 class PlayingCard {
-  private _suit: Suit;
+  private readonly _suit: Suit;
 
-  private _rank: Rank;
+  private readonly _rank: Rank;
 
   private _faceUp: boolean;
 
@@ -11,9 +11,11 @@ class PlayingCard {
     this._faceUp = faceUp;
   }
 
-  public suit = (): Suit => this._suit;
+  public get suit(): Suit {
+    return this._suit;
+  }
 
-  public rank = (): string => {
+  public get rank(): string {
     switch (this._rank) {
       case 1: return 'A';
       case 11: return 'J';
@@ -21,11 +23,13 @@ class PlayingCard {
       case 13: return 'K';
       default: return this._rank.toString();
     }
-  };
+  }
 
   public value = (): number => Math.min(this._rank, 10);
 
-  public faceUp = (): boolean => this._faceUp;
+  public get faceUp(): boolean {
+    return this._faceUp;
+  }
 
   public setFaceUp(faceUp: boolean) {
     this._faceUp = faceUp;

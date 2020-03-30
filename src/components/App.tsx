@@ -26,7 +26,7 @@ const App = () => {
       return hand;
     });
     setButtons({ hit: false, stand: false, reset: true });
-    game.setTurn(User.dealer);
+    game.turn = User.dealer;
   }, [game]);
 
   const reset = () => {
@@ -52,11 +52,11 @@ const App = () => {
   }, [playerHand, dealerHand, Message.win, Message.loss, Message.tie]);
 
   useEffect(() => {
-    switch (game.turn()) {
+    switch (game.turn) {
       case undefined:
         setDealerHand(game.initialHand(User.dealer));
         setPlayerHand(game.initialHand(User.player));
-        game.setTurn(User.player);
+        game.turn = User.player;
         break;
       case User.player:
         if (Game.busts(playerHand)) stand();
@@ -69,7 +69,7 @@ const App = () => {
         }
         break;
     }
-  }, [game, playerHand, dealerHand, stand, outcome, buttons]);
+  }, [game, game.turn, playerHand, dealerHand, stand, outcome]);
 
   return (
     <>
